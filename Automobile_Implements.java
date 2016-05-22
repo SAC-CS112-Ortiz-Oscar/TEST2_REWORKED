@@ -1,5 +1,5 @@
 
-public class Automobile extends Dice
+public class Automobile implements DiceInterface
 {
 	// Member variables
 	private String 	year;
@@ -74,4 +74,19 @@ public class Automobile extends Dice
 	public int getCurrentSpeed() { return currentSpeed; }
 	
 	public double getDistanceTraveled() { return distanceTraveled; }
+	
+	@Override
+	public int rollDice(int lowerBound, int upperBound) 
+	{
+		return lowerBound + (int)(Math.random() * upperBound);
+	}
+	@Override
+	public int throwDice(int dices) 
+	{
+		int upperBound = 6 * dices;
+		int lowerBound = dices;
+		
+		int diceRoll = rollDice(lowerBound,upperBound);
+		return diceRoll;
+	}
 }
